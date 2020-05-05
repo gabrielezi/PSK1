@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Sections in #{restaurantDetails.restaurant.name} restaurant:</h2>
+    <ul>
+        <ui:repeat value="#{restaurantDetails.restaurant.sections}" var="section">
+            <li>
+                <h:link value="id: #{section.id}, name: #{section.name}" outcome="chefs?sectionId=#{section.id}"/>
+            </li>
+        </ui:repeat>
+    </ul>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{restaurantDetails.newSection.name}" required="true"/>
+        <h:commandButton value="Add a new section to this restaurant" action="#{restaurantDetails.createSection}">
+            <f:param name="restaurantId" value="#{restaurantDetails.restaurant.id}"></f:param>
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="/index" value="Back"></h:link>
+</h:body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>MyBatis implementation</h2>
+    <h2>Restaurants:</h2>
+    <ol>
+        <ui:repeat value="#{restaurantsMyBatis.allRestaurants}" var="restaurant">
+            <li><h:link value="#{restaurant.title}" outcome="sections?restaurantId=#{restaurant.id}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{restaurantsMyBatis.restaurantToCreate.title}" required="true"/>
+        <h:commandButton value="Add new Restaurant" action="#{restaurantsMyBatis.createRestaurant}"/>
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>
