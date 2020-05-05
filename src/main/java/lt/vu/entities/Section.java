@@ -28,10 +28,7 @@ public class Section {
 
     @ManyToOne
     @JoinColumn(name = "RESTAURANT_ID")
-   //@ManyToMany
-  // @JoinTable(name = "RESTAURANT_SECTION")
     private Restaurant restaurant;
-   //private List<Restaurant> restaurants = new ArrayList<>();
 
     @OneToMany(mappedBy = "section")
     private List<Chef> chefs;

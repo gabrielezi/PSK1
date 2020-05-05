@@ -25,6 +25,5 @@ public class Restaurant {
     private String name;
 
     @OneToMany(mappedBy = "restaurant")
-  // @ManyToMany(mappedBy = "restaurants")
     private List<Section> sections = new ArrayList<>();
 }
