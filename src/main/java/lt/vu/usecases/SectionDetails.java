@@ -32,9 +32,6 @@ public class SectionDetails {
     @Getter @Setter
     private Section section;
 
-    @Getter
-    private List<Chef> allChefs;
-
     @Getter @Setter
     private Chef newChef = new Chef();
 

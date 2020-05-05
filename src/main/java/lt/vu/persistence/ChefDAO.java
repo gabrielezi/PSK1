@@ -28,4 +28,12 @@ public class ChefDAO {
     public Chef update(Chef chef){
         return entityManager.merge(chef);
     }
+
+    public List<Chef> FindByRestaurant(Integer restaurantId){
+        return entityManager.createQuery(
+                "select c from Chef c "+
+                        "where c.section.restaurant.id = :restaurant_Id")
+                .setParameter("restaurant_Id", restaurantId)
+                .getResultList();
+    }
 }

@@ -27,6 +27,13 @@
             <f:param name="restaurantId" value="#{restaurantDetails.restaurant.id}"></f:param>
         </h:commandButton>
     </h:form>
+    <ol>
+        <ui:repeat value="#{chefs.allChefs}" var="chef">
+            <li>
+                id: #{chef.id}, name: #{chef.name}, doorCode: #{chef.doorCode}
+            </li>
+        </ui:repeat>
+    </ol>
     <h:link outcome="index" value="Back"></h:link>
 </h:body>
 </html>
