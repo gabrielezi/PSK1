@@ -1,5 +1,5 @@
 <datasources>
-    <datasource jndi-name="PlayersDataSource" pool-name="PlayersDataSource">
+    <datasource jndi-name="RestaurantDataSource" pool-name="RestaurantDataSource">
         <driver>h2</driver>
         <connection-url>jdbc:h2:~/h2database/RestaurantDB;AUTO_SERVER=TRUE</connection-url>
         <security>
