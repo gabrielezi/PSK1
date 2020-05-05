@@ -7,9 +7,8 @@ import java.util.Random;
 @ApplicationScoped
 public class DoorCodeGenerator implements Serializable {
     public String generateDoorCode(char nameLetter){
-        Integer randomNumb = new Random().nextInt(1000);
+        int randomNumb = new Random().nextInt(1000);
         String temp = "" + randomNumb;
-        String doorCode = nameLetter + temp;
-        return doorCode;
+        return nameLetter + temp;
     }
 }
