@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Model
 public class SectionDetails {
@@ -30,6 +31,9 @@ public class SectionDetails {
 
     @Getter @Setter
     private Section section;
+
+    @Getter
+    private List<Chef> allChefs;
 
     @Getter @Setter
     private Chef newChef = new Chef();

@@ -12,6 +12,13 @@
             <li><h:link value="#{restaurant.name}" outcome="restaurants?restaurantId=#{restaurant.id}" /></li>
         </ui:repeat>
     </ol>
+    <ol>
+        <ui:repeat value="#{chefs.allChefs}" var="chef">
+            <li>
+                id: #{chef.id}, name: #{chef.name}, doorCode: #{chef.doorCode}
+            </li>
+        </ui:repeat>
+    </ol>
     <h:form>
         <h:inputText value="#{restaurants.newRestaurant.name}" required="true"/>
         <h:commandButton value="Add new Restaurant" action="#{restaurants.createRestaurant}"/>
