@@ -22,10 +22,11 @@
         </h:commandButton>
     </h:form>
     <h:form>
-        <h:inputText a:placeholder="name" value="#{restaurantDetails.restaurant.name}" required="true"/>
-        <h:commandButton value="change name" action="#{restaurantDetails.updateRestaurantName}">
-            <f:param name="restaurantId" value="#{restaurantDetails.restaurant.id}"></f:param>
+        <h:inputText a:placeholder="name" value="#{updateRestaurant.restaurant.name}" required="true"/>
+        <h:commandButton value="change name" action="#{updateRestaurant.updateRestaurantName}">
+            <f:param name="restaurantId" value="#{updateRestaurant.restaurant.id}"></f:param>
         </h:commandButton>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
     </h:form>
     <ol>
         <ui:repeat value="#{chefs.allChefs}" var="chef">
