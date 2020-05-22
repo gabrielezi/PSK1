@@ -11,7 +11,7 @@
     <ul>
         <ui:repeat value="#{sectionDetails.section.chefs}" var="chef">
             <li>
-                id: #{chef.id}, name: #{chef.name}, doorCode: #{chef.doorCode}
+                <h:link value="id: #{chef.id}, name: #{chef.name}, doorCode: #{chef.doorCode}" outcome="chefs?chefId=#{chef.id}"/>
             </li>
         </ui:repeat>
     </ul>

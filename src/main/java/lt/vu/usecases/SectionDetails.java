@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Chef;
 import lt.vu.entities.Section;
+import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.mybatis.dao.SectionMapper;
 import lt.vu.persistence.ChefDAO;
 import lt.vu.persistence.SectionDAO;
@@ -13,6 +14,7 @@ import lt.vu.services.DoorCodeGenerator;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.util.List;
 

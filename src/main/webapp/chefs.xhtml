@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+</h:head>
+<h:body>
+    <h2>Chef:</h2>
+    <h3>Id: #{chefDetails.chef.id}, name: #{chefDetails.chef.name}, door code: #{chefDetails.chef.doorCode}</h3>
+    <h:form>
+        <h:outputText value="door code: "/>
+        <h:inputText a:placeholder="enter the value" value="#{chefDetails.chef.doorCode}" required="true" />
+        <h:commandButton value="update" action="#{chefDetails.updateDoorCode()}">
+            <f:param name="chefId" value="#{chefDetails.chef.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:form>
+        <h:outputText value="#{generateDoorCode.codeGenerationStatus}" />
+        <h:commandButton value="Generate door code?" disabled="#{generateDoorCode.codeGenerationRunning}" action="#{generateDoorCode.generateNewDoorCode()}">
+            <f:param name="chefId" value="#{chefDetails.chef.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="index" value="Back"></h:link>
+</h:body>
+
+</html>
