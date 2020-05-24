@@ -6,7 +6,6 @@ import lt.vu.entities.Chef;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.mybatis.dao.ChefMapper;
 import lt.vu.persistence.ChefDAO;
-import lt.vu.services.DoorCodeGenerator;
 import lt.vu.services.ParameterCollector;
 
 import javax.annotation.PostConstruct;

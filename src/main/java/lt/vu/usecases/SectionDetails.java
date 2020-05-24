@@ -9,9 +9,11 @@ import lt.vu.mybatis.dao.SectionMapper;
 import lt.vu.persistence.ChefDAO;
 import lt.vu.persistence.SectionDAO;
 import lt.vu.services.ParameterCollector;
-import lt.vu.services.DoorCodeGenerator;
+import lt.vu.usecases.DoorCodeGeneration.ICodeGeneration;
 
 import javax.annotation.PostConstruct;
+import javax.decorator.Delegate;
+import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.persistence.OptimisticLockException;
@@ -25,8 +27,6 @@ public class SectionDetails {
     @Inject
     private SectionDAO sectionDAO;
     @Inject
-    private DoorCodeGenerator doorCodeGenerator;
-    @Inject
     private ChefDAO chefDAO;
     @Inject
     private ParameterCollector parameterCollector;
@@ -37,6 +37,10 @@ public class SectionDetails {
     @Getter @Setter
     private Chef newChef = new Chef();
 
+    @Inject
+    @Any
+    ICodeGeneration iCodeGeneration;
+
     @PostConstruct
     public void init(){
         Integer restaurantId = parameterCollector.getInt("sectionId");
@@ -46,7 +50,8 @@ public class SectionDetails {
     @Transactional
     public String createChef(){
         newChef.setSection(section);
-        newChef.setDoorCode(doorCodeGenerator.generateDoorCode(newChef.getName().charAt(0)));
+        //newChef.setDoorCode(doorCodeGenerator.generateDoorCode(newChef.getName().charAt(0)));
+        newChef.setDoorCode(iCodeGeneration.generateDoorCode(newChef.getName()));
         chefDAO.persist(newChef);
         return refreshPageString();
     }

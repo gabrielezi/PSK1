@@ -5,8 +5,8 @@ import lombok.Setter;
 import lt.vu.entities.Chef;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.ChefDAO;
-import lt.vu.services.DoorCodeGenerator;
 import lt.vu.services.ParameterCollector;
+import lt.vu.usecases.DoorCodeGeneration.ICodeGeneration;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -18,9 +18,9 @@ import java.util.concurrent.ExecutionException;
 @SessionScoped
 @Named
 public class GenerateDoorCode implements Serializable {
-    @Inject
-    DoorCodeGenerator doorCodeGenerator;
 
+    @Inject
+    ICodeGeneration iCodeGeneration;
     private CompletableFuture<String> doorCodeGenerationTask = null;
 
     @Getter @Setter
@@ -34,8 +34,9 @@ public class GenerateDoorCode implements Serializable {
     public String generateNewDoorCode() {
         Integer chefId = parameterCollector.getInt("chefId");
         chef = chefDAO.findOne(chefId);
+        String chefName = chef.getName();
 
-        doorCodeGenerationTask = CompletableFuture.supplyAsync(() -> doorCodeGenerator.generateNewDoorCode(chef.getName().charAt(0)));
+        doorCodeGenerationTask = CompletableFuture.supplyAsync(() -> iCodeGeneration.generateDoorCode(chefName));
 
         return "chefs.xhtml?faces-redirect=true&chefId=" + chef.getId();
     }
@@ -52,5 +53,7 @@ public class GenerateDoorCode implements Serializable {
         }
         return "New door code: " + doorCodeGenerationTask.get();
     }
+
+
 }
 
