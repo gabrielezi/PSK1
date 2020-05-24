@@ -33,7 +33,6 @@ public class ChefDetails {
         chef = chefDAO.findOne(chefId);
     }
     @Transactional
-    @LoggedInvocation
     public String updateDoorCode() {
         chefDAO.update(this.chef);
         return "chefs.xhtml?faces-redirect=true&chefId=" + chef.getId();

@@ -11,7 +11,7 @@ public class GenerateNewCode implements ICodeGeneration{
     public String generateDoorCode(String name) {
         char firstLetter = name.charAt(0);
         try {
-            Thread.sleep(2000); // Simulate intensive work
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
         }
         Integer generatedDoorCode = new Random().nextInt(1000);

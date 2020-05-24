@@ -1,10 +1,11 @@
 package lt.vu.usecases.DoorCodeGeneration;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.io.Serializable;
+import javax.enterprise.inject.Alternative;
 import java.util.Random;
 
 @ApplicationScoped
+@Alternative
 public class GenerateCode implements ICodeGeneration {
 
     public String generateDoorCode(String name){
