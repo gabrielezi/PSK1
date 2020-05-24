@@ -1,7 +1,6 @@
 package lt.vu.usecases.DoorCodeGeneration;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
 import java.util.Random;
 
 @ApplicationScoped

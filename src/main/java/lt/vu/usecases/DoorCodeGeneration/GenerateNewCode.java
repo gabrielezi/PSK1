@@ -1,21 +1,17 @@
 package lt.vu.usecases.DoorCodeGeneration;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
-import java.util.Random;
+import javax.enterprise.inject.Specializes;
 
-@ApplicationScoped
+@Specializes
 @Alternative
-public class GenerateNewCode implements ICodeGeneration{
+public class GenerateNewCode extends GenerateCode{
     @Override
     public String generateDoorCode(String name) {
-        char firstLetter = name.charAt(0);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
         }
-        Integer generatedDoorCode = new Random().nextInt(1000);
-        String temp = "" + generatedDoorCode;
-        return firstLetter + temp;
+        return super.generateDoorCode(name);
     }
 }

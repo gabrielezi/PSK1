@@ -28,13 +28,13 @@
         </h:commandButton>
         <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
     </h:form>
-    <ol>
-        <ui:repeat value="#{chefs.allChefs}" var="chef">
-            <li>
-                id: #{chef.id}, name: #{chef.name}, doorCode: #{chef.doorCode}
-            </li>
-        </ui:repeat>
-    </ol>
+<!--    <ol>-->
+<!--        <ui:repeat value="#{chefs.allChefs}" var="chef">-->
+<!--            <li>-->
+<!--                id: #{chef.id}, name: #{chef.name}, doorCode: #{chef.doorCode}-->
+<!--            </li>-->
+<!--        </ui:repeat>-->
+<!--    </ol>-->
     <h:link outcome="index" value="Back"></h:link>
 </h:body>
 </html>
