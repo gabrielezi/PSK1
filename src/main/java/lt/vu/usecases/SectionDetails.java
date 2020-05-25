@@ -50,7 +50,6 @@ public class SectionDetails {
     @Transactional
     public String createChef(){
         newChef.setSection(section);
-        //newChef.setDoorCode(doorCodeGenerator.generateDoorCode(newChef.getName().charAt(0)));
         newChef.setDoorCode(iCodeGeneration.generateDoorCode(newChef.getName()));
         chefDAO.persist(newChef);
         return refreshPageString();
