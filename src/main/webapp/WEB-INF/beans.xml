@@ -8,6 +8,7 @@
 
     <interceptors>
         <class>lt.vu.interceptors.MethodLogger</class>
+        <class>lt.vu.interceptors.OptLockHandler</class>
     </interceptors>
     <alternatives>
         <class>lt.vu.usecases.DoorCodeGeneration.GenerateNewCode</class>

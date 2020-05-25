@@ -3,6 +3,7 @@ package lt.vu.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Restaurant;
+import lt.vu.interceptors.CheckedForOptException;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.RestaurantDAO;
 import lt.vu.services.ParameterCollector;
@@ -36,12 +37,9 @@ public class UpdateRestaurant implements Serializable {
 
     @Transactional
     @LoggedInvocation
+    @CheckedForOptException
     public String updateRestaurantName() {
-        try{
-            restaurantDAO.update(this.restaurant);
-        } catch (OptimisticLockException e) {
-            return "restaurants.xhtml?faces-redirect=true&restaurantId=" + restaurant.getId() + "&error=optimistic-lock-exception";
-        }
+        restaurantDAO.update(this.restaurant);
         return "index.xhtml?faces-redirect=true";
     }
 }
