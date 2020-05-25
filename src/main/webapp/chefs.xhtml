@@ -11,7 +11,7 @@
 </h:head>
 <h:body>
     <h2>Chef:</h2>
-    <h3>Id: #{chefDetails.chef.id}, name: #{chefDetails.chef.name}, door code: #{chefDetails.chef.doorCode}</h3>
+    <h3>#{chefDetails.chefInfo}</h3>
     <h:form>
         <h:outputText value="door code: "/>
         <h:inputText a:placeholder="enter the value" value="#{chefDetails.chef.doorCode}" required="true" />

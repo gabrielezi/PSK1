@@ -2,6 +2,7 @@ package lt.vu.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
+import lt.vu.decorators.BasicInfo;
 import lt.vu.entities.Chef;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.mybatis.dao.ChefMapper;
@@ -18,6 +19,8 @@ import javax.transaction.Transactional;
 
 @Model
 public class ChefDetails {
+    @Inject
+    BasicInfo basicInfo;
     @Inject
     private ChefMapper chefMapper;
     @Inject
@@ -36,5 +39,9 @@ public class ChefDetails {
     public String updateDoorCode() {
         chefDAO.update(this.chef);
         return "chefs.xhtml?faces-redirect=true&chefId=" + chef.getId();
+    }
+
+    public String getChefInfo(){
+        return basicInfo.getChefInfo(chef);
     }
 }

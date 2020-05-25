@@ -10,6 +10,9 @@
         <class>lt.vu.interceptors.MethodLogger</class>
         <class>lt.vu.interceptors.OptLockHandler</class>
     </interceptors>
+    <decorators>
+        <class>lt.vu.decorators.FullInfo</class>
+    </decorators>
     <alternatives>
         <class>lt.vu.usecases.DoorCodeGeneration.GenerateNewCode</class>
     </alternatives>
